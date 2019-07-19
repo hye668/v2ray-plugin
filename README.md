@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/shadowsocks/v2ray-plugin.svg?style=shield)](https://circleci.com/gh/shadowsocks/v2ray-plugin)
 [![Releases](https://img.shields.io/github/downloads/shadowsocks/v2ray-plugin/total.svg)](https://github.com/shadowsocks/v2ray-plugin/releases)
-[![Language: Go](https://img.shields.io/badge/go-1.11+-blue.svg)](https://github.com/shadowsocks/v2ray-plugin/search?l=go)
+[![Language: Go](https://img.shields.io/badge/go-1.12+-blue.svg)](https://github.com/shadowsocks/v2ray-plugin/search?l=go)
 [![Go Report Card](https://goreportcard.com/badge/github.com/shadowsocks/v2ray-plugin)](https://goreportcard.com/report/github.com/shadowsocks/v2ray-plugin)
 [![License](https://img.shields.io/github/license/shadowsocks/v2ray-plugin.svg)](LICENSE)
 
@@ -60,12 +60,12 @@ ss-local -c config.json -p 443 --plugin v2ray-plugin --plugin-opts "mode=quic;ho
 ### Issue a cert for TLS and QUIC
 
 v2ray-plugin will look for TLS certificates signed by [acme.sh](https://github.com/Neilpang/acme.sh) by default.
-Here's some sample commands for issuing a certificate.
+Here's some sample commands for issuing a certificate using CloudFlare.
+You can find commands for issuing certificates for other DNS providers at acme.sh.
 
 ```sh
 curl https://get.acme.sh | sh
-sudo apt-get -y install socat
-sudo ~/.acme.sh/acme.sh --issue -d mydomain.me --standalone -k 4096
+~/.acme.sh/acme.sh --issue --dns dns_cf -d mydomain.me
 ```
 
 Alternatively, you can specify path to your certificates using option `cert` and `key`.
